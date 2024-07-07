@@ -12,4 +12,6 @@ dotnet tool install --global dotnet-ef
 ```
 -------------------------------------
 After all of these you can run this command to start web server  in the project file
-```dotnet run```
+```
+dotnet run
+```
