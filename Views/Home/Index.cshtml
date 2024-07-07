@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    
+}
+@model List<Book>
+<style>
+    td{
+        padding: 2rem;
+        border:1px black solid
+    }
+</style>
+<div class="text-center" style="height: 100%;background: rgba(255, 255, 255, 0.9);border-radius: 1rem;">
+        @if(!User.Identity.IsAuthenticated){
+            <h1 class="display-4">Welcome </h1>
+        }
+        @if(User.Identity.IsAuthenticated){
+            <h1 class="display-4">Welcome @User.Identity.Name</h1>
+        }
+</div>
+
+<div class="flex p-5" style="flex-direction: column;justify-content: center;align-items: center;background: rgba(255, 255, 255, 0.9);border-radius: 1rem;">
+    <table style="margin: 0 auto;">
+        <tr>
+            <td>Book Name</td>
+            <td>Writer</td>
+            <td>Type</td>
+            <td>Year</td>
+            @if(User.Identity.IsAuthenticated){
+                <td></td>
+                <td></td>
+            }
+        </tr>
+        @foreach(var i in Model){
+            @if(User.Identity.IsAuthenticated){
+                <tr>
+                    <td>@i.Name</td>
+                    <td>@i.Writer</td>
+                    <td>@i.Type</td>
+                    <td>@i.Year</td>
+                    <td><a class="btn btn-primary" asp-controller="Home" asp-action="BookUpdate" asp-route-id="@i.BookId" >Update</a></td>
+                    <td><a type="submit" class="btn btn-danger" asp-controller="Home" asp-action="BookRemove" asp-route-id="@i.BookId">Delete</a></td>
+                </tr>
+            }
+            @if(!User.Identity.IsAuthenticated){
+                <tr>
+                    <td>@i.Name</td>
+                    <td>@i.Writer</td>
+                    <td>@i.Type</td>
+                    <td>@i.Year</td>
+                </tr>
+            }
+        }
+    </table>
+</div>

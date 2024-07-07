@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Update Book ";
+}
+@model Book
+<form asp-controller="Home" asp-action="BookUpdate" method="post" style="display:flex;flex-direction: column; justify-content: center;align-items: center;background: rgba(255, 255, 255, 0.9);border-radius: 1rem;">
+        <input type="hidden" asp-for="BookId">
+        <div class="m-2"><label asp-for="Name">Name : </label> <input asp-for="Name" class="form-control" required></div>
+        <div class="m-2"><label asp-for="Writer">Writer : </label> <input asp-for="Writer" class="form-control" required></div>
+        <div class="m-2"><label asp-for="Type">Type : </label> <input asp-for="Type" class="form-control" required></div>
+        <div class="m-2"><label asp-for="Year">Year : </label> <input asp-for="Year" class="form-control" required></div>
+        <button type="submit" class="btn btn-primary m-2">Update</button>
+</form>
+
+
+
